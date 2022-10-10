@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <button onclick="klikTerus()" type="button">Yok diklik</button>
+        <p id="results">Will be here</p>
+
+        <p id="temporary">Bjir</p>
+        <script>
+            // Store
+            localStorage.setItem("lastName", "Herlambang");
+            // Retrieve
+            document.getElementById("results").innerHTML = localStorage.getItem("lastName");
+            // Delete
+            localStorage.removeItem("lastName")
+
+            function klikTerus() {
+                let result = document.getElementById("results")
+                if (typeof(Storage) !== "undefined") {
+                    if (localStorage.clickcount) {
+                    localStorage.clickcount = Number(localStorage.clickcount)+1;
+                    } else {
+                    localStorage.clickcount = 1;
+                    }
+                    result.innerHTML = "Aduh aku diklik " + localStorage.clickcount + " kali";
+                } else {
+                    result.innerHTML = "Maaf... nggak bisa, gimana dong?";
+                }
+                let result2 = document.getElementById("temporary")
+                if (typeof(Storage) !== "undefined") {
+                    if (sessionStorage.clickcount) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+                    } else {
+                    sessionStorage.clickcount = 1;
+                    }
+                    result2.innerHTML = "Aduh aku diklik " + sessionStorage.clickcount + " kali";
+                } else {
+                    result2.innerHTML = "Maaf... nggak bisa, gimana dong?";
+                }
+            }
+        </script>
+    </body>
+</html>
